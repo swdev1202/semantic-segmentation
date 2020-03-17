@@ -26,9 +26,9 @@ if not os.path.exists(args.save_dir):
 
 for disp_id, disp_name in enumerate(disps):
     # load disparity map (.npy)
-    disp_dir = os.path.join(disp_dir, disp_name)
-    print(disp_dir)
-    disp = np.load(disp_dir)
+    disp_path = os.path.join(disp_dir, disp_name)
+    print(disp_path)
+    disp = np.load(disp_path)
 
     # create an empty mask
     mask = np.zeros_like(disp)
@@ -36,6 +36,7 @@ for disp_id, disp_name in enumerate(disps):
     
     # load corresponding label to mask
     label_file = os.path.join(label_dir, labels[disp_id])
+    print(label_file)
     with open(label_file, 'r') as f:
         lines = f.readlines()
     
