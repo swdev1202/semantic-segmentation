@@ -26,9 +26,9 @@ if not os.path.exists(args.save_dir):
 
 for disp_id, disp_name in enumerate(disps):
     # load disparity map (.npy)
-    disp_dir = os.path.join(disp_dir, disp_name)
-    print(disp_dir)
-    disp = np.load(disp_dir)
+    disp_path = os.path.join(disp_dir, disp_name)
+    print(disp_path)
+    disp = np.load(disp_path)
     
     # load corresponding mask
     mask_dir = os.path.join(mask_dir, masks[disp_id])
