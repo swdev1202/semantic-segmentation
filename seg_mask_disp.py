@@ -31,9 +31,9 @@ for disp_id, disp_name in enumerate(disps):
     disp = np.load(disp_path)
     
     # load corresponding mask
-    mask_dir = os.path.join(mask_dir, masks[disp_id])
-    print(mask_dir)
-    mask = Image.open(mask_dir)
+    mask_path = os.path.join(mask_dir, masks[disp_id])
+    print(mask_path)
+    mask = Image.open(mask_path)
     mask = np.array(mask).astype(float) # turn Image -> numpy array
     mask[mask > 0.0] = 1.0 # turn anything greater than 0 to 1
 
