@@ -77,8 +77,9 @@ for img_id, img_name in enumerate(images):
     # save label-based predictions, e.g. for submission purpose
     label_out = np.zeros_like(pred)
     for label_id, train_id in args.dataset_cls.id_to_trainid.items():
-        label_out[np.where(pred == train_id)] = label_id
-        cv2.imwrite(os.path.join(args.save_dir, pred_name), label_out)
+        if(train_id == 13): #cars only
+            label_out[np.where(pred == train_id)] = label_id
+            cv2.imwrite(os.path.join(args.save_dir, pred_name), label_out)
 end_time = time.time()
 
 print('Results saved.')
