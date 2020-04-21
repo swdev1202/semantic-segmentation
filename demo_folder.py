@@ -50,6 +50,7 @@ if not os.path.exists(args.save_dir):
 
 start_time = time.time()
 for img_id, img_name in enumerate(images):
+    start_time_iter = time.time()
     img_dir = os.path.join(data_dir, img_name)
     img = Image.open(img_dir).convert('RGB')
     img_tensor = img_transform(img)
@@ -80,6 +81,10 @@ for img_id, img_name in enumerate(images):
         if(train_id == 13): #cars only
             label_out[np.where(pred == train_id)] = label_id
             cv2.imwrite(os.path.join(args.save_dir, pred_name), label_out)
+
+    end_time_iter = time.time()
+    print(f'Inference takes {end_time_iter - start_time_iter} seconds')
+
 end_time = time.time()
 
 print('Results saved.')
