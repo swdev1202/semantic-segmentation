@@ -67,12 +67,12 @@ for img_id, img_name in enumerate(images):
     pred_name = 'pred_mask_' + img_name
 
     # save colorized predictions
-    colorized = args.dataset_cls.colorize_mask(pred)
-    colorized.save(os.path.join(args.save_dir, color_name))
+    #colorized = args.dataset_cls.colorize_mask(pred)
+    #colorized.save(os.path.join(args.save_dir, color_name))
 
     # save colorized predictions overlapped on original images
-    overlap = cv2.addWeighted(np.array(img), 0.5, np.array(colorized.convert('RGB')), 0.5, 0)
-    cv2.imwrite(os.path.join(args.save_dir, overlap_name), overlap[:, :, ::-1])
+    #overlap = cv2.addWeighted(np.array(img), 0.5, np.array(colorized.convert('RGB')), 0.5, 0)
+    #cv2.imwrite(os.path.join(args.save_dir, overlap_name), overlap[:, :, ::-1])
 
     # save label-based predictions, e.g. for submission purpose
     label_out = np.zeros_like(pred)
